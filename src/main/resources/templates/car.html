@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en"xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Car Sales Management</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/sales">Sales</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/car">Car</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/auth/logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Car</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Make</th>
+                    <th>Model</th>
+                    <th>ReleaseDate</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="car-list">
+                <!-- Car data will be populated here by JavaScript -->
+            </tbody>
+        </table>
+        <button class="btn btn-custom" id="add-car">Add Car</button>
+    </div>
+
+    <!-- Add/Edit Car Modal -->
+    <div class="modal fade" id="carModal" tabindex="-1" aria-labelledby="carModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="carModalLabel">Add Car</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="car-form">
+                        <input type="hidden" id="car-id">
+                        <div class="form-group">
+                            <label for="car-make">Make</label>
+                            <input type="text" id="car-make" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="car-model">Model</label>
+                            <input type="text" id="car-model" class="form-control" required>
+                        </div>                        
+                        <div class="form-group">
+                            <label for="car-releaseDate">ReleaseDate</label>
+                            <input type="date" id="car-releaseDate" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="car-price">Price</label>
+                            <input type="number" step="0.01" id="car-price" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-custom">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script th:src="@{/js/car.js}"></script>
+</body>
+</html>
